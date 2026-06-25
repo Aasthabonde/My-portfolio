@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aastha Nitesh Bonde | CS Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Space+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- 1. CORE VARIABLES --- */
+        :root {
+            --bg-color: #0a0a0a;
+            --surface-color: #171717;
+            --border-color: #262626;
+            --text-main: #f5f5f5;
+            --text-muted: #a3a3a3;
+            /* Animated Gradient Colors */
+            --gradient-1: #3b82f6;
+            --gradient-2: #8b5cf6;
+            --gradient-3: #ec4899;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: var(--bg-color); }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gradient-2); }
+
+        /* --- 2. TYPOGRAPHY & ANIMATIONS --- */
+        /* This creates the premium shifting color text effect */
+        .gradient-text {
+            background: linear-gradient(to right, var(--gradient-1), var(--gradient-2), var(--gradient-3));
+            background-size: 200% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: gradientMove 5s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% center; }
+            50% { background-position: 100% center; }
+            100% { background-position: 0% center; }
+        }
+
+        /* --- 3. NAVIGATION --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 0;
+            background: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(15px); /* Glass effect */
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            text-decoration: none;
+            color: var(--text-main);
+            letter-spacing: 1px;
+        }
+
+        .nav-links { display: flex; gap: 2.5rem; }
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover { color: var(--text-main); }
+
+        /* --- 4. LAYOUT CONTAINERS --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section { padding: 10rem 0 5rem; }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        /* --- 5. HERO SECTION --- */
+        #home {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 0;
+        }
+
+        .hero-tagline {
+            font-family: 'Space Mono', monospace;
+            color: var(--gradient-1);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-desc {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 3rem;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--text-main);
+            color: var(--bg-color);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255,255,255,0.1);
+        }
+
+        .btn-secondary {
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--text-main);
+            background: rgba(255,255,255,0.05);
+        }
+
+        /* --- 6. ABOUT / EDUCATION TIMELINE --- */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: var(--border-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 5px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--gradient-2);
+            box-shadow: 0 0 10px var(--gradient-2);
+        }
+
+        .timeline-date {
+            font-family: 'Space Mono', monospace;
+            color: var(--gradient-2);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .timeline-content p { color: var(--text-muted); }
+
+        /* --- 7. SKILLS SECTION --- */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .skill-badge {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .skill-badge:hover {
+            border-color: var(--gradient-1);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.1);
+        }
+
+        .skill-badge i { color: var(--gradient-1); }
+
+        /* --- 8. PROJECTS GRID --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .project-card {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gradient-3);
+        }
+
+        .project-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-card p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .tech-tags {
+            display: flex;
+            gap: 1rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--gradient-1);
+        }
+
+        /* --- 9. SCROLL ANIMATION CLASSES (JS TRIGGERS) --- */
+        .hidden {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- 10. RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .button-group { flex-direction: column; width: 100%; }
+            .btn-primary, .btn-secondary { text-align: center; }
+            .hero-title { font-size: 3.5rem; }
+        }
+        
+        footer {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-muted);
+            font-family: 'Space Mono', monospace;
+            border-top: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="#" class="logo">AASTHA<span style="color: var(--gradient-1)">.</span></a>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Work</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section id="home">
+            <span class="hero-tagline hidden">&gt; Intern / Student / Developer</span>
+            <h1 class="hero-title hidden">
+                Hi, I'm <br>
+                <span class="gradient-text">Aastha Nitesh Bonde.</span>
+            </h1>
+            <p class="hero-desc hidden">
+                I am a 3rd-year Computer Science Diploma student and a passionate software engineering intern. I specialize in building logical, clean, and highly responsive web applications.
+            </p>
+            <div class="button-group hidden">
+                <a href="#projects" class="btn-primary">View Internship Tasks</a>
+                <a href="#contact" class="btn-secondary">Let's Connect</a>
+            </div>
+        </section>
+
+        <section id="about">
+            <h2 class="section-title hidden">My Journey</h2>
+            <div class="timeline">
+                <div class="timeline-item hidden">
+                    <p class="timeline-date">Current</p>
+                    <div class="timeline-content">
+                        <h3>Software Engineering Intern</h3>
+                        <p>Currently executing technical challenges, learning industry-standard practices, and building robust web portfolios as part of my internship program.</p>
+                    </div>
+                </div>
+                <div class="timeline-item hidden">
+                    <p class="timeline-date">3rd Year</p>
+                    <div class="timeline-content">
+                        <h3>Diploma in Computer Science</h3>
+                        <p>Entering my final year of diploma studies, focusing on advanced programming logic, web architecture, and software development lifecycles.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2 class="section-title hidden">Technical Arsenal</h2>
+            <div class="skills-grid">
+                <div class="skill-badge hidden"><i class="fa-brands fa-html5"></i> HTML5</div>
+                <div class="skill-badge hidden"><i class="fa-brands fa-css3-alt"></i> CSS3</div>
+                <div class="skill-badge hidden"><i class="fa-brands fa-js"></i> JavaScript</div>
+                <div class="skill-badge hidden"><i class="fa-brands fa-git-alt"></i> Git</div>
+                <div class="skill-badge hidden"><i class="fa-solid fa-mobile-screen"></i> Responsive UI</div>
+                <div class="skill-badge hidden"><i class="fa-solid fa-brain"></i> Logic & Algorithms</div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2 class="section-title hidden">Featured Work</h2>
+            <div class="projects-grid">
+                
+                <div class="project-card hidden">
+                    <h3>Task 1: Premium Portfolio</h3>
+                    <p>Engineered a high-performance personal portfolio from scratch. Utilized modern CSS variables, animated gradients, and JavaScript Intersection Observers for scroll animations.</p>
+                    <div class="tech-tags">
+                        <span>HTML</span>
+                        <span>CSS Variables</span>
+                        <span>Vanilla JS</span>
+                    </div>
+                </div>
+
+                <div class="project-card hidden">
+                    <h3>Upcoming Task 2</h3>
+                    <p>Reserved repository for my next major internship assignment. Preparing to implement advanced backend or state-driven front-end features based on upcoming sessions.</p>
+                    <div class="tech-tags">
+                        <span>TBD</span>
+                        <span>In Development</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="contact" style="text-align: center;">
+            <h2 class="section-title hidden">Get In Touch</h2>
+            <p class="hero-desc hidden" style="margin: 0 auto 3rem auto;">
+                Whether it's for a job opportunity, a technical discussion, or feedback on my internship progress, my inbox is always open.
+            </p>
+            <div class="button-group hidden" style="justify-content: center;">
+                <!-- Updated link to open directly in Gmail -->
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=bondeastha365@gmail.com" target="_blank" rel="noopener noreferrer" class="btn-primary"><i class="fa-solid fa-envelope"></i> Email Me</a>
+                <a href="https://github.com/Aasthabonde" target="_blank" rel="noopener noreferrer" class="btn-secondary"><i class="fa-brands fa-github"></i> GitHub</a>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>Built with determination by Aastha Nitesh Bonde</p>
+    </footer>
+
+    <script>
+        /* * This script looks at all elements with the class 'hidden'.
+         * When you scroll down and those elements enter the viewport,
+         * it adds the class 'show', which triggers the CSS animation.
+         */
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        }, {
+            threshold: 0.1 // Triggers when 10% of the element is visible
+        });
+
+        const hiddenElements = document.querySelectorAll('.hidden');
+        hiddenElements.forEach((el) => observer.observe(el));
+    </script>
+</body>
+</html>
